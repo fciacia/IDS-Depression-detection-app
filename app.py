@@ -382,6 +382,279 @@ st.markdown("""
         position: absolute;
         left: 0;
     }
+    
+    /* Enhanced Card Animations */
+    .content-container, .story-card, .stat-card, .quote-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .content-container:hover, .story-card:hover, .stat-card:hover, .quote-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    /* Gradient Text */
+    .gradient-text {
+        background: linear-gradient(120deg, #1976D2, #64B5F6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+    }
+    
+    /* Enhanced Form Fields */
+    .stSelectbox > div > div {
+        background: white;
+        border-radius: 1rem !important;
+        border: 2px solid #E3F2FD !important;
+        transition: all 0.3s ease;
+    }
+    
+    .stSelectbox > div > div:hover {
+        border-color: #90CAF9 !important;
+        box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.1);
+    }
+    
+    /* Slider Improvements */
+    .stSlider > div > div > div {
+        background-color: #2196F3 !important;
+    }
+    
+    .stSlider > div > div > div > div {
+        background-color: #1976D2 !important;
+        box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+    }
+    
+    /* Progress Steps */
+    .progress-steps {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem 0;
+        padding: 1rem;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .step {
+        display: flex;
+        align-items: center;
+        margin: 0 1rem;
+    }
+    
+    .step-number {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #42a5f5, #1976d2);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-right: 0.5rem;
+        box-shadow: 0 4px 6px rgba(33, 150, 243, 0.2);
+    }
+    
+    .step-text {
+        color: #1976D2;
+        font-weight: 500;
+    }
+    
+    /* Results Page Cards */
+    .result-card {
+        background: white;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border-left: 5px solid;
+        transition: all 0.3s ease;
+    }
+    
+    .result-card.success {
+        border-color: #4CAF50;
+        background: linear-gradient(to right, #E8F5E9 0%, white 100%);
+    }
+    
+    .result-card.warning {
+        border-color: #FFC107;
+        background: linear-gradient(to right, #FFF8E1 0%, white 100%);
+    }
+    
+    .result-card.danger {
+        border-color: #F44336;
+        background: linear-gradient(to right, #FFEBEE 0%, white 100%);
+    }
+    
+    /* Animated Icons */
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    
+    .icon-pulse {
+        animation: pulse 2s infinite;
+        display: inline-block;
+    }
+    
+    /* Chart Container Enhancement */
+    .chart-container {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 1.5rem 0;
+        transition: all 0.3s ease;
+    }
+    
+    .chart-container:hover {
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        transform: translateY(-5px);
+    }
+
+    /* Main button styling */
+    .stButton > button {
+        width: 100%;
+        background: linear-gradient(90deg, #42a5f5 0%, #1976d2 100%) !important;
+        color: white !important;
+        font-size: 2rem !important;
+        font-weight: 900 !important;
+        padding: 1.5rem 4rem !important;
+        border: none !important;
+        border-radius: 4rem !important;
+        box-shadow: 0 8px 32px 0 rgba(33, 150, 243, 0.25) !important;
+        transition: all 0.3s ease !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1.5px !important;
+        margin: 1rem 0 !important;
+        animation: button-glow 2s infinite !important;
+    }
+
+    .stButton > button:hover {
+        transform: scale(1.05) !important;
+        box-shadow: 0 12px 48px 0 rgba(33, 150, 243, 0.35), 0 0 48px 8px #42a5f5 !important;
+        background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%) !important;
+    }
+
+    @keyframes button-glow {
+        0% { box-shadow: 0 8px 32px 0 rgba(33, 150, 243, 0.25), 0 0 32px 4px #90caf9; }
+        50% { box-shadow: 0 12px 48px 0 rgba(33, 150, 243, 0.35), 0 0 48px 8px #42a5f5; }
+        100% { box-shadow: 0 8px 32px 0 rgba(33, 150, 243, 0.25), 0 0 32px 4px #90caf9; }
+    }
+
+    /* Container styling */
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .title-section {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+        color: #37474F;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        max-width: 800px;
+    }
+
+    .cta-text {
+        font-size: 1.3rem;
+        color: #1976D2;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
+    }
+
+    /* Simplified Personal Information Section */
+    .personal-info-section {
+        background: white;
+        border-radius: 1.5rem;
+        padding: 2rem;
+        margin: 1.5rem 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .personal-info-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #E3F2FD;
+    }
+
+    .personal-info-content {
+        padding: 1rem 0;
+    }
+
+    /* Improved CGPA Slider */
+    .cgpa-slider {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        margin: 1.5rem 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .cgpa-slider .slider-label {
+        color: #1976D2;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+
+    .cgpa-value {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #1976D2;
+        margin: 1rem 0;
+        padding: 0.5rem;
+        background: #E3F2FD;
+        border-radius: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    /* Simple Select Box */
+    .simple-select {
+        margin-bottom: 1.5rem;
+    }
+
+    .simple-select label {
+        color: #1976D2;
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    /* Override Streamlit's default slider styling for CGPA */
+    .cgpa-slider .stSlider > div > div {
+        background: #E3F2FD !important;
+    }
+
+    .cgpa-slider .stSlider > div > div > div {
+        background: linear-gradient(90deg, #42A5F5, #1976D2) !important;
+        height: 0.5rem !important;
+    }
+
+    .cgpa-slider .stSlider > div > div > div > div {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+        background: white !important;
+        border: 2px solid #1976D2 !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+        transition: all 0.2s ease !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -503,79 +776,122 @@ if load_error:
 
 # Page 1: Home
 if st.session_state.page == "Home":
-    st.markdown("<h1 class='main-title'>Depression Detection App</h1>", unsafe_allow_html=True)
-
-    # Hero Section with CTA
+    # Add custom CSS for the button
     st.markdown("""
-        <div class='hero-section' style='background: linear-gradient(90deg, #e3f2fd 60%, #bbdefb 100%); border-radius: 2rem; padding: 2.5rem 2rem 2rem 2rem; margin-bottom: 2rem; box-shadow: 0 6px 24px rgba(33,150,243,0.08); text-align: center;'>
-            <h2 style='color: #1976D2; font-size: 2.2rem; font-weight: bold; margin-bottom: 1rem;'>Your Mental Health Journey Starts Here</h2>
-            <p style='color: #37474F; font-size: 1.2rem; margin-bottom: 2rem;'>
-                Every student faces unique challenges. This tool is here to help you reflect, understand, and take positive steps for your well-being. <br><br>
-                <span style='color: #1976D2; font-weight: 600;'>You are not alone.</span> Let's take the first step together.
-            </p>
+        <style>
+        /* Main button styling */
+        .stButton > button {
+            width: 100%;
+            background: linear-gradient(90deg, #42a5f5 0%, #1976d2 100%) !important;
+            color: white !important;
+            font-size: 2rem !important;
+            font-weight: 900 !important;
+            padding: 1.5rem 4rem !important;
+            border: none !important;
+            border-radius: 4rem !important;
+            box-shadow: 0 8px 32px 0 rgba(33, 150, 243, 0.25) !important;
+            transition: all 0.3s ease !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 1rem 0 !important;
+            animation: button-glow 2s infinite !important;
+        }
+
+        .stButton > button:hover {
+            transform: scale(1.05) !important;
+            box-shadow: 0 12px 48px 0 rgba(33, 150, 243, 0.35), 0 0 48px 8px #42a5f5 !important;
+            background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%) !important;
+        }
+
+        @keyframes button-glow {
+            0% { box-shadow: 0 8px 32px 0 rgba(33, 150, 243, 0.25), 0 0 32px 4px #90caf9; }
+            50% { box-shadow: 0 12px 48px 0 rgba(33, 150, 243, 0.35), 0 0 48px 8px #42a5f5; }
+            100% { box-shadow: 0 8px 32px 0 rgba(33, 150, 243, 0.25), 0 0 32px 4px #90caf9; }
+        }
+
+        /* Container styling */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #37474F;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .cta-text {
+            font-size: 1.3rem;
+            color: #1976D2;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # Main content structure
+    st.markdown("""
+        <div class="main-container">
+            <div class="title-section">
+                <h1 class="gradient-text" style="font-size: 3rem; margin-bottom: 1rem;">
+                    Depression Detection App
+                </h1>
+                <p class="subtitle">
+                    Your mental health matters. Let's take care of it together.
+                </p>
+            </div>
+            <div style="width: 100%; max-width: 500px; text-align: center;">
+                <p class="cta-text">Ready to begin your journey?</p>
+            </div>
         </div>
     """, unsafe_allow_html=True)
 
-    # Fancy CTA Button
+    # Button in a centered column
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("Start Analysis", key="start-analysis", use_container_width=True):
+            st.session_state.page = "Input Form"
+            st.rerun()
+
+    # Rest of the content
     st.markdown("""
-        <div class='fancy-cta-btn-wrapper' style='display: flex; flex-direction: column; align-items: center; margin-top: -3rem; margin-bottom: 2.5rem;'>
-            <div style='font-size: 1.2rem; color: #1976D2; font-weight: bold; margin-bottom: 1.2rem; letter-spacing: 1px;'>
-                Ready to begin?
-            </div>
-    """, unsafe_allow_html=True)
-    custom_btn_css = """
-        <style>
-        .fancy-cta-btn-wrapper .stButton > button {
-            background: linear-gradient(90deg, #42a5f5 0%, #1976d2 100%) !important;
-            color: white !important;
-            font-size: 2.3rem !important;
-            font-weight: 900 !important;
-            border: 4px solid transparent !important;
-            border-radius: 4rem !important;
-            padding: 1.7rem 5.5rem !important;
-            box-shadow: 0 8px 32px 0 rgba(33, 150, 243, 0.25), 0 0 32px 4px #90caf9 !important;
-            cursor: pointer !important;
-            transition: all 0.3s cubic-bezier(.4,2,.3,1) !important;
-            letter-spacing: 1.5px !important;
-            text-transform: uppercase !important;
-            outline: none !important;
+        <!-- Hero Section -->
+        <div class='hero-section' style='
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(33,150,243,0.15);
+            text-align: center;
             position: relative;
-            z-index: 2;
-            border-image: linear-gradient(90deg, #42a5f5, #1976d2, #42a5f5) 1 !important;
-            box-sizing: border-box !important;
-        }
-        .fancy-cta-btn-wrapper .stButton > button:hover {
-            background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%) !important;
-            transform: scale(1.09) !important;
-            box-shadow: 0 16px 48px 0 rgba(33, 150, 243, 0.40), 0 0 64px 12px #42a5f5 !important;
-            filter: brightness(1.10);
-        }
-        .fancy-cta-btn-wrapper .stButton > button::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 140%;
-            height: 140%;
-            background: radial-gradient(circle, rgba(66,165,245,0.22) 0%, rgba(25,118,210,0.10) 80%, transparent 100%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            pointer-events: none;
-            animation: pulse-glow 2.5s infinite cubic-bezier(.4,2,.3,1);
-        }
-        @keyframes pulse-glow {
-            0% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.12); }
-            100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
-        }
-        </style>
-    """
-    st.markdown(custom_btn_css, unsafe_allow_html=True)
-    if st.button("Start Analysis", key="start-analysis-functional"):
-        st.session_state.page = "Input Form"
-        st.rerun()
-    st.markdown("</div>", unsafe_allow_html=True)
+            overflow: hidden;
+        '>
+            <div class='icon-pulse' style='font-size: 3rem; margin-bottom: 1rem;'>🧠</div>
+            <h2 style='color: #1976D2; font-size: 2.4rem; font-weight: bold; margin-bottom: 1.5rem;'>
+                Understanding Your Mental Health
+            </h2>
+            <p style='color: #37474F; font-size: 1.3rem; line-height: 1.6; margin-bottom: 2rem;'>
+                Every student faces unique challenges. This tool is here to help you reflect, 
+                understand, and take positive steps for your well-being.
+                <br><br>
+                <span style='color: #1976D2; font-weight: 600;'>You are not alone.</span>
+            </p>
+        </div>
+    """, unsafe_allow_html=True)
 
     # Motivational Quote Card
     st.markdown("""
@@ -677,7 +993,7 @@ elif st.session_state.page == "Input Form":
             <span style='display:inline-block; background: linear-gradient(90deg, #42a5f5, #1976d2); color: white; font-weight: bold; border-radius: 2rem; padding: 0.5rem 1.5rem; font-size: 1.1rem; letter-spacing: 1px;'>Step 2 of 3: Assessment</span>
         </div>
     """, unsafe_allow_html=True)
-    # Sidebar storytelling/fact
+    # Story/Statistics card
     st.markdown("""
         <div class='story-card' style='max-width: 400px; margin: 0 auto 2rem auto; background: #fffde7;'>
             <div class='story-title' style='color: #FF9800;'>Did you know?</div>
@@ -686,57 +1002,145 @@ elif st.session_state.page == "Input Form":
                 <span style='color: #1976D2; font-weight: 600;'>Taking this assessment is a sign of courage and self-care.</span>
             </p>
         </div>
+
+        <div class='section-divider'></div>
     """, unsafe_allow_html=True)
     
-    st.markdown("<div class='content-container'>", unsafe_allow_html=True)
     with st.form("depression_assessment"):
-        st.markdown("<h3 class='section-title'>Personal Information</h3>", unsafe_allow_html=True)
+        # Personal Information Section
+        st.markdown("""
+            <div class='personal-info-section'>
+                <div class='personal-info-header'>
+                    <span class='section-icon'>👤</span>
+                    <h3>Personal Information</h3>
+                </div>
+                <div class='personal-info-content'>
+        """, unsafe_allow_html=True)
+        
         col1, col2 = st.columns(2)
-        
         with col1:
-            gender = st.selectbox("Gender", ["Female", "Male"])
-            degree = st.selectbox("Degree Level", ["Pre-U", "Diploma", "Undergraduate", "Postgraduate", "PhD"])
-            cgpa = st.slider("CGPA (0-4 scale)", 0.0, 4.0, 2.0, 0.1,
-                           help="Your current Cumulative Grade Point Average")
-        
+            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
+            st.markdown("<label>Gender</label>", unsafe_allow_html=True)
+            gender = st.selectbox("##", ["Female", "Male"], key="gender_select")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
+            st.markdown("<label>Degree Level</label>", unsafe_allow_html=True)
+            degree = st.selectbox("##", ["Pre-U", "Diploma", "Undergraduate", "Postgraduate", "PhD"], key="degree_select")
+            st.markdown("</div>", unsafe_allow_html=True)
+
         with col2:
-            sleep_duration = st.selectbox("Average Sleep Duration", [
+            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
+            st.markdown("<label>Sleep Duration</label>", unsafe_allow_html=True)
+            sleep_duration = st.selectbox("##", [
                 "Less than 5 hours",
                 "5-6 hours",
                 "7-8 hours",
                 "More than 8 hours"
-            ])
-            dietary_habits = st.selectbox("Dietary Habits", ["Unhealthy", "Moderate", "Healthy"],
-                                       help="How would you rate your overall eating habits?")
+            ], key="sleep_select")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
+            st.markdown("<label>Dietary Habits</label>", unsafe_allow_html=True)
+            dietary_habits = st.selectbox("##", ["Unhealthy", "Moderate", "Healthy"], key="diet_select",
+                                        help="How would you rate your overall eating habits?")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+        # Improved CGPA Slider
+        st.markdown("<div class='cgpa-slider'>", unsafe_allow_html=True)
+        st.markdown("<div class='slider-label'>CGPA (0-4 scale)</div>", unsafe_allow_html=True)
+        cgpa = st.slider("##", 0.0, 4.0, 2.0, 0.1, 
+                        help="Your current Cumulative Grade Point Average",
+                        key="cgpa_slider")
+        st.markdown(f"<div class='cgpa-value'>{cgpa:.1f}</div>", unsafe_allow_html=True)
+        st.markdown("</div>", unsafe_allow_html=True)
         
-        st.markdown("<h3 class='section-title'>Academic and Work</h3>", unsafe_allow_html=True)
+        st.markdown("</div></div>", unsafe_allow_html=True)
+
+        # Academic and Work Section
+        st.markdown("""
+            <div class='form-section'>
+                <div class='section-header'>
+                    <span class='section-icon'>📚</span>
+                    <h3>Academic and Work</h3>
+                </div>
+                <div class='form-grid'>
+        """, unsafe_allow_html=True)
+
         col1, col2 = st.columns(2)
-        
         with col1:
-            academic_pressure = st.slider("Academic Pressure", 1, 5,
-                                       help="1 = Very Low, 5 = Very High")
-            study_satisfaction = st.slider("Study Satisfaction", 1, 5,
-                                        help="1 = Very Dissatisfied, 5 = Very Satisfied")
-        
+            # Academic Pressure Slider
+            st.markdown("<div class='custom-slider'>", unsafe_allow_html=True)
+            st.markdown("<div class='slider-label'>Academic Pressure</div>", unsafe_allow_html=True)
+            academic_pressure = st.slider("##", 1, 5, 3,
+                                        help="1 = Very Low, 5 = Very High",
+                                        key="academic_pressure_slider")
+            st.markdown(f"""
+                <div class='slider-value'>
+                    {academic_pressure} - {['Very Low', 'Low', 'Moderate', 'High', 'Very High'][academic_pressure-1]}
+                </div>
+            """, unsafe_allow_html=True)
+            st.markdown("</div>", unsafe_allow_html=True)
+
+            # Study Satisfaction Slider
+            st.markdown("<div class='custom-slider'>", unsafe_allow_html=True)
+            st.markdown("<div class='slider-label'>Study Satisfaction</div>", unsafe_allow_html=True)
+            study_satisfaction = st.slider("##", 1, 5, 3,
+                                         help="1 = Very Dissatisfied, 5 = Very Satisfied",
+                                         key="study_satisfaction_slider")
+            st.markdown(f"""
+                <div class='slider-value'>
+                    {study_satisfaction} - {['Very Dissatisfied', 'Dissatisfied', 'Neutral', 'Satisfied', 'Very Satisfied'][study_satisfaction-1]}
+                </div>
+            """, unsafe_allow_html=True)
+            st.markdown("</div>", unsafe_allow_html=True)
+
         with col2:
-            work_study_hours = st.number_input("Daily Work/Study Hours", 0, 24, 8,
+            st.markdown("<div class='form-field'>", unsafe_allow_html=True)
+            st.markdown("<label class='field-label'>Daily Work/Study Hours</label>", unsafe_allow_html=True)
+            work_study_hours = st.number_input("##", 0, 24, 8,
                                              help="Average hours spent on work/study per day")
-            financial_stress = st.slider("Financial Stress Level", 1, 5,
-                                      help="1 = No Stress, 5 = Severe Stress")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+            # Financial Stress Slider
+            st.markdown("<div class='custom-slider'>", unsafe_allow_html=True)
+            st.markdown("<div class='slider-label'>Financial Stress Level</div>", unsafe_allow_html=True)
+            financial_stress = st.slider("##", 1, 5, 3,
+                                       help="1 = No Stress, 5 = Severe Stress",
+                                       key="financial_stress_slider")
+            st.markdown(f"""
+                <div class='slider-value'>
+                    {financial_stress} - {['No Stress', 'Mild', 'Moderate', 'High', 'Severe'][financial_stress-1]}
+                </div>
+            """, unsafe_allow_html=True)
+            st.markdown("</div>", unsafe_allow_html=True)
+
+        st.markdown("</div></div>", unsafe_allow_html=True)
+
+        # Mental Health History Section
+        st.markdown("""
+            <div class='form-section'>
+                <div class='section-header'>
+                    <span class='section-icon'>🧠</span>
+                    <h3>Mental Health History</h3>
+                </div>
+        """, unsafe_allow_html=True)
         
-        st.markdown("<h3 class='section-title'>Mental Health History</h3>", unsafe_allow_html=True)
         col1, col2 = st.columns(2)
-        
         with col1:
-            family_mental_history = st.selectbox("Family History of Mental Health Issues",
-                                               ["No", "Yes"],
+            st.markdown("<div class='form-field'>", unsafe_allow_html=True)
+            st.markdown("<label class='field-label'>Family History of Mental Health Issues</label>", unsafe_allow_html=True)
+            family_mental_history = st.selectbox("##", ["No", "Yes"], key="family_history_select",
                                                help="Has anyone in your immediate family been diagnosed with mental health issues?")
-        
+            st.markdown("</div>", unsafe_allow_html=True)
+
         with col2:
-            suicidal_thoughts = st.selectbox("Have you had thoughts of self-harm?",
-                                           ["No", "Yes"],
+            st.markdown("<div class='form-field'>", unsafe_allow_html=True)
+            st.markdown("<label class='field-label'>Thoughts of Self-harm</label>", unsafe_allow_html=True)
+            suicidal_thoughts = st.selectbox("##", ["No", "Yes"], key="selfharm_select",
                                            help="This information is confidential and helps in risk assessment")
-        
+            st.markdown("</div>", unsafe_allow_html=True)
+
         st.markdown("""
             <div class='warning-box'>
                 <h4>⚠️ Privacy Notice</h4>
@@ -935,40 +1339,45 @@ elif st.session_state.page == "Prediction":
                     st.stop()
 
             st.markdown("<div class='content-container'>", unsafe_allow_html=True)
+            
             # Display results in columns
             col1, col2 = st.columns([2, 1])
             
             with col1:
                 st.markdown("<h3 class='section-title'>Risk Assessment</h3>", unsafe_allow_html=True)
-                if prediction == 1:
-                    st.markdown("""
-                        <div class='error-box'>
-                            <h4>⚠️ Depression Risk Detected</h4>
-                            <p>Based on your responses, you may be experiencing signs of depression.</p>
-                            <p><strong>Important:</strong> This is not a diagnosis. Please consult a mental health professional for proper evaluation.</p>
-                        </div>
-                    """, unsafe_allow_html=True)
-                else:
-                    st.markdown("""
-                        <div class='success-box'>
-                            <h4>✅ Low Risk Detected</h4>
-                            <p>Your responses suggest a lower risk of depression.</p>
-                            <p>However, mental health can change over time. Stay mindful of your well-being.</p>
-                        </div>
-                    """, unsafe_allow_html=True)
                 
-                st.markdown("<h3 class='section-title'>Confidence Level</h3>", unsafe_allow_html=True)
-                st.markdown("""
-                    <div style='margin: 1.5rem 0;'>
-                        <div style='font-weight: bold; color: #1976D2; margin-bottom: 0.5rem;'>Confidence Level</div>
-                        <div style='background: #e3f2fd; border-radius: 2rem; height: 38px; width: 100%; box-shadow: 0 2px 8px rgba(33,150,243,0.10); position: relative;'>
-                            <div style='background: linear-gradient(90deg, #42A5F5, #1976D2); height: 100%; border-radius: 2rem; width: {0}%; transition: width 0.7s cubic-bezier(.4,2,.3,1); box-shadow: 0 2px 12px #90caf9; position: absolute; left: 0; top: 0; display: flex; align-items: center;'>
-                                <span style='color: white; font-weight: bold; font-size: 1.1rem; margin-left: 1.2rem;'>{1:.1f}%</span>
+                # Enhanced result card with confidence display
+                st.markdown(f"""
+                    <div class='result-card {"danger" if prediction == 1 else "success"}'>
+                        <div style='display: flex; align-items: center; margin-bottom: 1rem;'>
+                            <div class='icon-pulse' style='font-size: 2rem; margin-right: 1rem;'>
+                                {"⚠️" if prediction == 1 else "✅"}
+                            </div>
+                            <h3 style='margin: 0; color: {"#F44336" if prediction == 1 else "#4CAF50"};'>
+                                {prediction == 1 and "Depression Risk Detected" or "Low Risk Detected"}
+                            </h3>
+                        </div>
+                        <div style='margin: 1.5rem 0;'>
+                            <div style='font-weight: bold; color: #1976D2; margin-bottom: 0.5rem;'>Analysis Confidence</div>
+                            <div style='background: #E3F2FD; border-radius: 2rem; height: 38px; width: 100%; box-shadow: 0 2px 8px rgba(33,150,243,0.10); position: relative; overflow: hidden;'>
+                                <div style='
+                                    background: linear-gradient(90deg, #42A5F5, #1976D2);
+                                    height: 100%;
+                                    width: {confidence*100}%;
+                                    border-radius: 2rem;
+                                    transition: width 1s cubic-bezier(.4,2,.3,1);
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: flex-end;
+                                    padding-right: 1rem;
+                                '>
+                                    <span style='color: white; font-weight: bold;'>{confidence*100:.1f}%</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                """.format(confidence*100, confidence*100), unsafe_allow_html=True)
-                
+                """, unsafe_allow_html=True)
+
                 st.markdown("<h3 class='section-title'>Key Contributing Factors</h3>", unsafe_allow_html=True)
                 st.markdown("<div class='chart-container'>", unsafe_allow_html=True)
                 
@@ -978,9 +1387,9 @@ elif st.session_state.page == "Prediction":
                 
                 # Create feature importance DataFrame with proper alignment
                 feature_importance = pd.DataFrame({
-                    'Factor': feature_names,  # Use all feature names
-                    'Value': input_df.iloc[0].values,  # Values from input
-                    'Importance': model.feature_importances_  # Importance scores from model
+                    'Factor': feature_names,
+                    'Value': input_df.iloc[0].values,
+                    'Importance': model.feature_importances_
                 })
                 
                 # Sort by importance and get top 5
@@ -1025,9 +1434,8 @@ elif st.session_state.page == "Prediction":
                        - Schedule a doctor's appointment
                     
                     2. **Emergency Resources**
-                       - National Crisis Hotline: 988
-                       - Crisis Text Line: Text HOME to 741741
-                       
+                       - Malaysia Emergency Response Services (MERS) 999.
+                                           
                     3. **Support System**
                        - Talk to trusted friends or family
                        - Join support groups
