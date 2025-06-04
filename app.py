@@ -624,36 +624,137 @@ st.markdown("""
         transition: all 0.3s ease;
     }
 
-    /* Simple Select Box */
-    .simple-select {
-        margin-bottom: 1.5rem;
+    /* Improved Selection Box Styling */
+    .simple-select .stSelectbox > div > div {
+        background: white !important;
+        border-radius: 0.5rem !important;
+        border: 2px solid #E3F2FD !important;
+        padding: 0.5rem !important;
+        min-height: 42px !important;
+        color: #2C3E50 !important;
+        font-size: 1rem !important;
     }
 
+    .simple-select .stSelectbox > div > div:hover {
+        border-color: #90CAF9 !important;
+        box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1) !important;
+    }
+
+    /* Label Styling */
     .simple-select label {
-        color: #1976D2;
-        font-size: 1.1rem;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
-        display: block;
+        color: #1976D2 !important;
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
+        margin-bottom: 0.5rem !important;
+        display: block !important;
     }
 
-    /* Override Streamlit's default slider styling for CGPA */
-    .cgpa-slider .stSlider > div > div {
+    /* Hide double labels */
+    .simple-select > div > label {
+        display: none !important;
+    }
+
+    /* Dropdown menu styling */
+    div[data-baseweb="select"] > div {
+        color: #2C3E50 !important;
+        background: white !important;
+    }
+
+    /* Fix placeholder color */
+    div[data-baseweb="select"] span {
+        color: #2C3E50 !important;
+    }
+
+    /* Selected option color */
+    div[role="option"][aria-selected="true"] {
+        color: #2C3E50 !important;
         background: #E3F2FD !important;
     }
 
-    .cgpa-slider .stSlider > div > div > div {
-        background: linear-gradient(90deg, #42A5F5, #1976D2) !important;
-        height: 0.5rem !important;
+    /* Input field styling */
+    .stNumberInput > div > div > input {
+        color: #2C3E50 !important;
+        font-size: 1rem !important;
     }
 
-    .cgpa-slider .stSlider > div > div > div > div {
-        width: 1.5rem !important;
-        height: 1.5rem !important;
-        background: white !important;
-        border: 2px solid #1976D2 !important;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
-        transition: all 0.2s ease !important;
+    /* Add these styles to the existing CSS */
+    <style>
+    /* Consistent box sizing and spacing for all form elements */
+    .simple-select {
+        margin-bottom: 2.5rem !important;  /* Increased margin bottom */
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 90px !important;
+    }
+
+    /* Label styling with consistent spacing */
+    .simple-select label {
+        color: #1976D2 !important;
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
+        margin-bottom: 0.5rem !important;
+        display: block !important;
+        flex-shrink: 0;
+    }
+
+    /* Make all select boxes and inputs the same size */
+    .simple-select .stSelectbox,
+    .simple-select .stNumberInput {
+        width: 100% !important;
+        flex-grow: 1;
+    }
+
+    /* Adjust the alignment for study satisfaction row */
+    .study-row {
+        display: flex !important;
+        gap: 1.5rem !important;
+        margin-bottom: 2.5rem !important;
+    }
+
+    .study-row > div {
+        flex: 1;
+        min-width: 0;  /* Prevents flex items from overflowing */
+    }
+
+    .study-row .simple-select {
+        margin-bottom: 0 !important;  /* Remove margin for items in the row */
+    }
+
+    /* Column styling for even spacing */
+    [data-testid="column"] {
+        padding: 0 0.5rem !important;
+    }
+
+    /* Reset Streamlit's default spacing */
+    [data-testid="stVerticalBlock"] {
+        gap: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Add these styles for the 2x2 grid layout */
+    .assessment-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.5rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .assessment-grid .simple-select {
+        margin-bottom: 0 !important;
+    }
+
+    /* Reset any column specific margins */
+    [data-testid="column"] {
+        padding: 0 0.5rem !important;
+    }
+
+    /* Ensure consistent height for selection boxes */
+    .simple-select .stSelectbox,
+    .simple-select .stNumberInput {
+        width: 100% !important;
+        min-height: 42px !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -948,9 +1049,14 @@ if st.session_state.page == "Home":
 
 # Page 2: Input Form
 elif st.session_state.page == "Input Form":
-    # Fancy Back Button
+    # Container for better width control
     st.markdown("""
-        <div class='back-button' style='position: relative; margin-bottom: 1.5rem;'>
+        <div style='max-width: 1000px; margin: 0 auto; padding: 0 1rem;'>
+    """, unsafe_allow_html=True)
+    
+    # Back Button with better positioning
+    st.markdown("""
+        <div class='back-button' style='margin-bottom: 2rem;'>
             <style>
             .fancy-back-btn button {
                 background: linear-gradient(90deg, #90CAF9, #1976D2) !important;
@@ -977,205 +1083,333 @@ elif st.session_state.page == "Input Form":
         st.rerun()
     st.markdown("</div></div>", unsafe_allow_html=True)
 
-    st.markdown("<h1 class='main-title'>Step 2: Your Story Matters</h1>", unsafe_allow_html=True)
+    # Main title and description with improved styling
     st.markdown("""
-        <div class='content-section' style='background: linear-gradient(90deg, #e3f2fd 60%, #bbdefb 100%); border-radius: 1.5rem; padding: 1.5rem 2rem; margin-bottom: 2rem; box-shadow: 0 4px 16px rgba(33,150,243,0.10);'>
-            <h2 style='color: #1976D2; font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem;'>You're taking a positive step!</h2>
-            <p style='color: #37474F; font-size: 1.1rem;'>
-                This short assessment is private and confidential. There are no right or wrong answers—just be honest with yourself. <br><br>
-                <span style='color: #1976D2; font-weight: 600;'>Remember: You are not alone on this journey.</span>
+        <div style='text-align: center; margin-bottom: 2rem;'>
+            <h1 class='main-title' style='margin-bottom: 1rem;'>Assessment Form</h1>
+            <p style='color: #37474F; font-size: 1.1rem; max-width: 600px; margin: 0 auto;'>
+                Your responses will help us better understand your current situation and provide appropriate recommendations.
             </p>
         </div>
     """, unsafe_allow_html=True)
-    # Progress indicator
-    st.markdown("""
-        <div style='text-align:center; margin-bottom: 1.5rem;'>
-            <span style='display:inline-block; background: linear-gradient(90deg, #42a5f5, #1976d2); color: white; font-weight: bold; border-radius: 2rem; padding: 0.5rem 1.5rem; font-size: 1.1rem; letter-spacing: 1px;'>Step 2 of 3: Assessment</span>
-        </div>
-    """, unsafe_allow_html=True)
-    # Story/Statistics card
-    st.markdown("""
-        <div class='story-card' style='max-width: 400px; margin: 0 auto 2rem auto; background: #fffde7;'>
-            <div class='story-title' style='color: #FF9800;'>Did you know?</div>
-            <p style='color: #37474F; font-size: 1.05rem;'>
-                More than half of students who struggle with mental health never seek help. <br>
-                <span style='color: #1976D2; font-weight: 600;'>Taking this assessment is a sign of courage and self-care.</span>
-            </p>
-        </div>
 
-        <div class='section-divider'></div>
+    # First blue box - Use exact HTML and style for the two paragraphs
+    st.markdown("""
+        <div style='
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.1);
+        '>
+            <h1 style='
+                color: #2196F3;
+                font-size: 2rem;
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+            '>You're taking a positive step!</h1>
+            <p style='
+                color: #37474F;
+                font-size: 1.2rem;
+                line-height: 1.6;
+                margin-bottom: 2rem;
+            '>
+                This short assessment is private and confidential. There are no right or wrong answers—just be honest with yourself.
+            </p>
+            <p style='
+                color: #2196F3;
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            '>
+                Remember: You are not alone on this journey.
+            </p>
+        </div>
     """, unsafe_allow_html=True)
-    
+
+    # Progress indicator with improved styling
+    st.markdown("""
+        <div style='text-align: center; margin-bottom: 2.5rem;'>
+            <div style='
+                display: inline-flex;
+                align-items: center;
+                padding: 0.5rem 1.5rem;
+                background: linear-gradient(90deg, #42a5f5, #1976d2);
+                color: white;
+                font-weight: bold;
+                border-radius: 2rem;
+                box-shadow: 0 2px 8px rgba(33,150,243,0.2);
+            '>
+                <span style='margin-right: 0.5rem;'>Step 2 of 3:</span>
+                <span>Assessment</span>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+    # Did you know section with lighter cream background
+    st.markdown("""
+        <div style='
+            background: #FFFDE7;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            border-left: 4px solid #FFC107;
+        '>
+            <h3 style='
+                color: #FF9800;
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+            '>Did you know?</h3>
+            <p style='
+                color: #37474F;
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+                line-height: 1.5;
+            '>
+                More than half of students who struggle with mental health never seek help.
+            </p>
+            <p style='
+                color: #2196F3;
+                font-size: 1.1rem;
+                font-weight: 500;
+            '>
+                Taking this assessment is a sign of courage and self-care.
+            </p>
+        </div>
+    """, unsafe_allow_html=True)
+
     with st.form("depression_assessment"):
-        # Personal Information Section
+        # Personal Information Section (2 columns, 3 rows)
         st.markdown("""
-            <div class='personal-info-section'>
-                <div class='personal-info-header'>
-                    <span class='section-icon'>👤</span>
-                    <h3>Personal Information</h3>
-                </div>
-                <div class='personal-info-content'>
+            <div style='
+                display: flex;
+                align-items: center;
+                margin-bottom: 2rem;
+                padding-bottom: 1rem;
+                border-bottom: 2px solid #E3F2FD;
+                background: #fff;
+                border-radius: 1rem;
+                box-shadow: 0 2px 8px rgba(33,150,243,0.06);
+                padding: 1rem 1.5rem;
+            '>
+                <span style='font-size: 1.5rem; margin-right: 0.8rem;'>👤</span>
+                <h2 style='
+                    margin: 0;
+                    color: #1976D2;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                '>Personal Information</h2>
+            </div>
         """, unsafe_allow_html=True)
-        
+
         col1, col2 = st.columns(2)
         with col1:
             st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
             st.markdown("<label>Gender</label>", unsafe_allow_html=True)
-            gender = st.selectbox("##", ["Female", "Male"], key="gender_select")
+            gender = st.selectbox("Gender Select", ["Female", "Male"], label_visibility="collapsed", key="gender_select")
             st.markdown("</div>", unsafe_allow_html=True)
 
             st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
             st.markdown("<label>Degree Level</label>", unsafe_allow_html=True)
-            degree = st.selectbox("##", ["Pre-U", "Diploma", "Undergraduate", "Postgraduate", "PhD"], key="degree_select")
-            st.markdown("</div>", unsafe_allow_html=True)
-
-        with col2:
-            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
-            st.markdown("<label>Sleep Duration</label>", unsafe_allow_html=True)
-            sleep_duration = st.selectbox("##", [
-                "Less than 5 hours",
-                "5-6 hours",
-                "7-8 hours",
-                "More than 8 hours"
-            ], key="sleep_select")
+            degree = st.selectbox("Degree Level Select", ["Pre-U", "Diploma", "Undergraduate", "Postgraduate", "PhD"], label_visibility="collapsed", key="degree_select")
             st.markdown("</div>", unsafe_allow_html=True)
 
             st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
             st.markdown("<label>Dietary Habits</label>", unsafe_allow_html=True)
-            dietary_habits = st.selectbox("##", ["Unhealthy", "Moderate", "Healthy"], key="diet_select",
+            dietary_habits = st.selectbox("Dietary Habits Select", ["Unhealthy", "Moderate", "Healthy"], 
+                                        label_visibility="collapsed", key="diet_select",
                                         help="How would you rate your overall eating habits?")
             st.markdown("</div>", unsafe_allow_html=True)
-
-        # Improved CGPA Slider
-        st.markdown("<div class='cgpa-slider'>", unsafe_allow_html=True)
-        st.markdown("<div class='slider-label'>CGPA (0-4 scale)</div>", unsafe_allow_html=True)
-        cgpa = st.slider("##", 0.0, 4.0, 2.0, 0.1, 
-                        help="Your current Cumulative Grade Point Average",
-                        key="cgpa_slider")
-        st.markdown(f"<div class='cgpa-value'>{cgpa:.1f}</div>", unsafe_allow_html=True)
-        st.markdown("</div>", unsafe_allow_html=True)
-        
-        st.markdown("</div></div>", unsafe_allow_html=True)
-
-        # Academic and Work Section
-        st.markdown("""
-            <div class='form-section'>
-                <div class='section-header'>
-                    <span class='section-icon'>📚</span>
-                    <h3>Academic and Work</h3>
-                </div>
-                <div class='form-grid'>
-        """, unsafe_allow_html=True)
-
-        col1, col2 = st.columns(2)
-        with col1:
-            # Academic Pressure Slider
-            st.markdown("<div class='custom-slider'>", unsafe_allow_html=True)
-            st.markdown("<div class='slider-label'>Academic Pressure</div>", unsafe_allow_html=True)
-            academic_pressure = st.slider("##", 1, 5, 3,
-                                        help="1 = Very Low, 5 = Very High",
-                                        key="academic_pressure_slider")
-            st.markdown(f"""
-                <div class='slider-value'>
-                    {academic_pressure} - {['Very Low', 'Low', 'Moderate', 'High', 'Very High'][academic_pressure-1]}
-                </div>
-            """, unsafe_allow_html=True)
-            st.markdown("</div>", unsafe_allow_html=True)
-
-            # Study Satisfaction Slider
-            st.markdown("<div class='custom-slider'>", unsafe_allow_html=True)
-            st.markdown("<div class='slider-label'>Study Satisfaction</div>", unsafe_allow_html=True)
-            study_satisfaction = st.slider("##", 1, 5, 3,
-                                         help="1 = Very Dissatisfied, 5 = Very Satisfied",
-                                         key="study_satisfaction_slider")
-            st.markdown(f"""
-                <div class='slider-value'>
-                    {study_satisfaction} - {['Very Dissatisfied', 'Dissatisfied', 'Neutral', 'Satisfied', 'Very Satisfied'][study_satisfaction-1]}
-                </div>
-            """, unsafe_allow_html=True)
-            st.markdown("</div>", unsafe_allow_html=True)
-
         with col2:
-            st.markdown("<div class='form-field'>", unsafe_allow_html=True)
-            st.markdown("<label class='field-label'>Daily Work/Study Hours</label>", unsafe_allow_html=True)
-            work_study_hours = st.number_input("##", 0, 24, 8,
-                                             help="Average hours spent on work/study per day")
+            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
+            st.markdown("<label style='margin-bottom: 2rem; color: #37474F; font-size: 1.0rem; font-weight: 500; display: block;'>Age</label>", unsafe_allow_html=True)
+            age = st.number_input("Age Input", min_value=18, max_value=60, value=20, label_visibility="collapsed", help="Your current age", key="age_input")
             st.markdown("</div>", unsafe_allow_html=True)
 
-            # Financial Stress Slider
-            st.markdown("<div class='custom-slider'>", unsafe_allow_html=True)
-            st.markdown("<div class='slider-label'>Financial Stress Level</div>", unsafe_allow_html=True)
-            financial_stress = st.slider("##", 1, 5, 3,
-                                       help="1 = No Stress, 5 = Severe Stress",
-                                       key="financial_stress_slider")
-            st.markdown(f"""
-                <div class='slider-value'>
-                    {financial_stress} - {['No Stress', 'Mild', 'Moderate', 'High', 'Severe'][financial_stress-1]}
-                </div>
-            """, unsafe_allow_html=True)
+            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
+            st.markdown("<label style='margin-top: 1.0rem; margin-bottom: 0.5rem; color: #37474F; font-size: 1.0rem; font-weight: 500; display: block;'>Sleep Duration</label>", unsafe_allow_html=True)
+            sleep_duration = st.selectbox("Sleep Duration Select", [
+                "Less than 5 hours",
+                "5-6 hours",
+                "7-8 hours",
+                "More than 8 hours"
+            ], label_visibility="collapsed", key="sleep_select")
             st.markdown("</div>", unsafe_allow_html=True)
 
-        st.markdown("</div></div>", unsafe_allow_html=True)
+            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
+            st.markdown("<label>CGPA</label>", unsafe_allow_html=True)
+            cgpa = st.selectbox("CGPA Select", [
+                "0.0-0.5", "0.5-1.0", "1.0-1.5", "1.5-2.0",
+                "2.0-2.5", "2.5-3.0", "3.0-3.5", "3.5-4.0"
+            ], index=4, label_visibility="collapsed", key="cgpa_select",
+            help="Your current Cumulative Grade Point Average")
+            st.markdown("</div>", unsafe_allow_html=True)
 
-        # Mental Health History Section
+        # Academic and Work Section with 2x2 grid (aligned)
         st.markdown("""
-            <div class='form-section'>
-                <div class='section-header'>
-                    <span class='section-icon'>🧠</span>
-                    <h3>Mental Health History</h3>
+            <div style='
+                margin: 1rem 0;
+                width: 100%;
+                background: #e3f2fd;
+                border-radius: 1.0rem;
+            '>
+                <div class='section-header' style='
+                    display: flex;
+                    align-items: center;
+                    margin-top: 2rem;
+                    margin-bottom: 2rem;
+                    padding-bottom: 1rem;
+                    border-bottom: 2px solid #E3F2FD;
+                    background: #fff;
+                    border-radius: 1rem;
+                    box-shadow: 0 2px 8px rgba(33,150,243,0.06);
+                    padding: 1rem 1.5rem;
+                '>
+                    <span style='font-size: 1.5rem; margin-right: 0.5rem;'>📚</span>
+                    <h2 style='
+                        margin: 0;
+                        color: #1976D2;
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        text-align: left;
+                    '>Academic and Well-being Assessment</h2>
                 </div>
-        """, unsafe_allow_html=True)
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown("<div class='form-field'>", unsafe_allow_html=True)
-            st.markdown("<label class='field-label'>Family History of Mental Health Issues</label>", unsafe_allow_html=True)
-            family_mental_history = st.selectbox("##", ["No", "Yes"], key="family_history_select",
-                                               help="Has anyone in your immediate family been diagnosed with mental health issues?")
-            st.markdown("</div>", unsafe_allow_html=True)
-
-        with col2:
-            st.markdown("<div class='form-field'>", unsafe_allow_html=True)
-            st.markdown("<label class='field-label'>Thoughts of Self-harm</label>", unsafe_allow_html=True)
-            suicidal_thoughts = st.selectbox("##", ["No", "Yes"], key="selfharm_select",
-                                           help="This information is confidential and helps in risk assessment")
-            st.markdown("</div>", unsafe_allow_html=True)
-
-        st.markdown("""
-            <div class='warning-box'>
-                <h4>⚠️ Privacy Notice</h4>
-                <p>Your responses are confidential and used only for assessment purposes. 
-                If you're experiencing severe symptoms, please seek immediate professional help.</p>
             </div>
         """, unsafe_allow_html=True)
-        
-        st.markdown("<div class='center-content'>", unsafe_allow_html=True)
-        submit_css = """
+
+        # 2x2 grid in a single row for perfect alignment
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
+            st.markdown("<label>Academic Pressure</label>", unsafe_allow_html=True)
+            academic_pressure = st.selectbox("Academic Pressure Select", [
+                "Very Low", "Low", "Moderate", "High", "Very High"
+            ], index=2, label_visibility="collapsed", key="academic_pressure_select",
+            help="Rate your level of academic pressure")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
+            st.markdown("<label style='margin-bottom: 2rem; display: block;'>Daily Work/Study Hours</label>", unsafe_allow_html=True)
+            work_study_hours = st.number_input("Daily Hours Select", 0, 24, 8,
+                                             label_visibility="collapsed",
+                                             help="Average hours spent on work/study per day",
+                                             key="work_hours_input")
+            st.markdown("</div>", unsafe_allow_html=True)
+        with col2:
+            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
+            st.markdown("<label>Study Satisfaction</label>", unsafe_allow_html=True)
+            study_satisfaction = st.selectbox("Study Satisfaction Select", [
+                "Very Dissatisfied", "Dissatisfied", "Neutral",
+                "Satisfied", "Very Satisfied"
+            ], index=2, label_visibility="collapsed", key="study_satisfaction_select",
+            help="How satisfied are you with your studies?")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
+            st.markdown("<label>Financial Stress Level</label>", unsafe_allow_html=True)
+            financial_stress = st.selectbox("Financial Stress Select", [
+                "No Stress", "Mild", "Moderate", "High", "Severe"
+            ], index=2, label_visibility="collapsed", key="financial_stress_select",
+            help="Rate your level of financial stress")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+        # Mental Health Section with improved styling
+        st.markdown("""
+            <div class='section-container' style='margin: 3rem 0;'>
+                <div class='section-header' style='
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 1.5rem;
+                    border-bottom: 2px solid #E3F2FD;
+                    background: #fff;
+                    border-radius: 1rem;
+                    box-shadow: 0 2px 8px rgba(33,150,243,0.06);
+                    padding: 1rem 1rem;
+                '>
+                    <span style='font-size: 1.5rem; margin-right: 0.5rem;'>🧠</span>
+                    <h2 style='
+                        margin: 0;
+                        color: #1976D2;
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                    '>Mental Health History</h2>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
+            st.markdown("<label>Family History of Mental Health Issues</label>", unsafe_allow_html=True)
+            family_mental_history = st.selectbox("##", ["No", "Yes"], key="family_history_select",
+                                            help="Has anyone in your immediate family been diagnosed with mental health issues?")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+        with col2:
+            st.markdown("<div class='simple-select'>", unsafe_allow_html=True)
+            st.markdown("<label>Thoughts of Self-harm</label>", unsafe_allow_html=True)
+            suicidal_thoughts = st.selectbox("##", ["No", "Yes"], key="selfharm_select",
+                                        help="This information is confidential and helps in risk assessment")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+        # Privacy Notice with improved styling
+        st.markdown("""
+            <div style='
+                background: #FFF3E0;
+                border-radius: 1rem;
+                padding: 1.5rem;
+                margin: 2rem 0;
+                border-left: 4px solid #FF9800;
+            '>
+                <h4 style='
+                    color: #E65100;
+                    margin: 0 0 0.5rem 0;
+                    display: flex;
+                    align-items: center;
+                    font-size: 1.1rem;
+                '>
+                    ⚠️ Privacy Notice
+                </h4>
+                <p style='
+                    color: #424242;
+                    margin: 0;
+                    font-size: 1rem;
+                    line-height: 1.5;
+                '>
+                    Your responses are confidential and used only for assessment purposes.
+                    If you're experiencing severe symptoms, please seek immediate professional help.
+                </p>
+            </div>
+        """, unsafe_allow_html=True)
+
+        # Submit button with improved styling
+        st.markdown("""
             <style>
-            .center-content .stForm .stButton > button, .center-content .stButton > button {
-                display: block;
-                margin: 0 auto;
+            div[data-testid="stFormSubmitButton"] > button {
                 background: linear-gradient(90deg, #1976D2, #42A5F5) !important;
                 color: white !important;
-                font-size: 1.3rem !important;
+                font-size: 1.2rem !important;
                 font-weight: bold !important;
-                border-radius: 2.5rem !important;
-                padding: 1.1rem 3.5rem !important;
-                box-shadow: 0 4px 16px rgba(33,150,243,0.18) !important;
+                padding: 1rem 2rem !important;
+                width: 100% !important;
+                max-width: 400px !important;
+                margin: 1rem auto !important;
+                display: block !important;
+                border-radius: 2rem !important;
                 border: none !important;
-                transition: all 0.2s cubic-bezier(.4,2,.3,1) !important;
+                box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3) !important;
+                transition: all 0.3s ease !important;
             }
-            .center-content .stForm .stButton > button:hover, .center-content .stButton > button:hover {
+            div[data-testid="stFormSubmitButton"] > button:hover {
+                transform: translateY(-2px) !important;
+                box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4) !important;
                 background: linear-gradient(90deg, #42A5F5, #1976D2) !important;
-                transform: scale(1.06) !important;
-                box-shadow: 0 8px 32px rgba(33,150,243,0.25) !important;
             }
             </style>
-        """
-        st.markdown(submit_css, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
         submitted = st.form_submit_button("Submit Assessment")
-        st.markdown("</div>", unsafe_allow_html=True)
-        
+
         if submitted:
             with st.spinner("Processing your responses..."):
                 try:
@@ -1200,20 +1434,43 @@ elif st.session_state.page == "Input Form":
                         "PhD": 4
                     }
 
+                    # Map age to age bin
+                    def get_age_bin(age):
+                        if age <= 19:
+                            return 0  # "[18.00, 19.00]"
+                        elif age <= 21:
+                            return 1  # "(19.00, 21.00]"
+                        elif age <= 23:
+                            return 2  # "(21.00, 23.00]"
+                        elif age <= 24:
+                            return 3  # "(23.00, 24.00]"
+                        elif age <= 25:
+                            return 4  # "(24.00, 25.00]"
+                        elif age <= 28:
+                            return 5  # "(25.00, 28.00]"
+                        elif age <= 29:
+                            return 6  # "(28.00, 29.00]"
+                        elif age <= 31:
+                            return 7  # "(29.00, 31.00]"
+                        elif age <= 33:
+                            return 8  # "(31.00, 33.00]"
+                        else:
+                            return 9  # "(33.00, 59.00]"
+
                     # Create input data dictionary with exact feature names from feature_names.txt
                     input_data = {
                         'gender': gender_encoded,
-                        'academic_pressure': academic_pressure,
-                        'study_satisfaction': study_satisfaction,
+                        'academic_pressure': ["Very Low", "Low", "Moderate", "High", "Very High"].index(academic_pressure) + 1,
+                        'study_satisfaction': ["Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"].index(study_satisfaction) + 1,
                         'sleep_duration': sleep_mapping[sleep_duration],
                         'dietary_habits': dietary_mapping[dietary_habits],
                         'degree': degree_mapping[degree],
                         'suicidal_thoughts': 1 if suicidal_thoughts == "Yes" else 0,
                         'work_study_hours': work_study_hours,
-                        'financial_stress': financial_stress,
+                        'financial_stress': ["No Stress", "Mild", "Moderate", "High", "Severe"].index(financial_stress) + 1,
                         'family_mental_history': 1 if family_mental_history == "Yes" else 0,
-                        'age_bin': 0,  # Default age bin
-                        'cgpa_scaled': float(cgpa)  # Ensure cgpa is converted to float
+                        'age_bin': get_age_bin(age),
+                        'cgpa_scaled': float(cgpa.split("-")[0])  # Get the lower bound of the CGPA range
                     }
                     
                     # Create DataFrame and ensure column order matches feature_names.txt exactly
@@ -1235,6 +1492,7 @@ elif st.session_state.page == "Input Form":
                     st.session_state["input_data"] = input_df
                     st.session_state["raw_input"] = {
                         'gender': gender,
+                        'age': age,
                         'degree': degree,
                         'cgpa': cgpa,
                         'sleep_duration': sleep_duration,
@@ -1256,7 +1514,8 @@ elif st.session_state.page == "Input Form":
                     st.error(f"Error details: {str(e)}")
                     logger.error(f"Form processing error: {str(e)}")
                     st.write("Please try again or contact support if the error persists.")
-    st.markdown("</div>", unsafe_allow_html=True)
+
+    st.markdown("</div>", unsafe_allow_html=True)  # Close main container
 
 # Page 3: Prediction
 elif st.session_state.page == "Prediction":
@@ -1313,14 +1572,10 @@ elif st.session_state.page == "Prediction":
     """, unsafe_allow_html=True)
 
     if "input_data" not in st.session_state:
-        st.markdown("<div class='content-container'>", unsafe_allow_html=True)
         st.warning("Please complete the assessment form first.")
-        st.markdown("<div class='center-content'>", unsafe_allow_html=True)
         if st.button("Go to Assessment Form"):
             st.session_state.page = "Input Form"
             st.rerun()
-        st.markdown("</div>", unsafe_allow_html=True)
-        st.markdown("</div>", unsafe_allow_html=True)
     else:
         try:
             with st.spinner("Analyzing your responses..."):
@@ -1338,13 +1593,17 @@ elif st.session_state.page == "Prediction":
                     st.error("Error making prediction. Please try again.")
                     st.stop()
 
-            st.markdown("<div class='content-container'>", unsafe_allow_html=True)
-            
             # Display results in columns
             col1, col2 = st.columns([2, 1])
             
             with col1:
-                st.markdown("<h3 class='section-title'>Risk Assessment</h3>", unsafe_allow_html=True)
+                st.markdown("""
+                    <h3 style='
+                        color: #1976D2;
+                        font-size: 1.8rem;
+                        margin: 1.5rem 0;
+                    '>Risk Assessment</h3>
+                """, unsafe_allow_html=True)
                 
                 # Enhanced result card with confidence display
                 st.markdown(f"""
@@ -1378,8 +1637,14 @@ elif st.session_state.page == "Prediction":
                     </div>
                 """, unsafe_allow_html=True)
 
-                st.markdown("<h3 class='section-title'>Key Contributing Factors</h3>", unsafe_allow_html=True)
-                st.markdown("<div class='chart-container'>", unsafe_allow_html=True)
+                st.markdown("""
+                    <h3 style='
+                        color: #1976D2;
+                        font-size: 1.8rem;
+                        margin: 1.5rem 0;
+                    '>Key Contributing Factors</h3>
+                """, unsafe_allow_html=True)
+                # Removed empty chart container box
                 
                 # Get feature names from feature_names.txt
                 with open('feature_names.txt', 'r') as f:
@@ -1415,16 +1680,27 @@ elif st.session_state.page == "Prediction":
                 
                 # Display the plot
                 st.pyplot(fig)
-                st.markdown("</div>", unsafe_allow_html=True)
                 
                 if st.checkbox("Show Your Responses"):
-                    st.markdown("<h3 class='section-title'>Your Responses</h3>", unsafe_allow_html=True)
+                    st.markdown("""
+                        <h3 style='
+                            color: #1976D2;
+                            font-size: 1.8rem;
+                            margin: 1.5rem 0;
+                        '>Your Responses</h3>
+                    """, unsafe_allow_html=True)
                     raw_input = st.session_state.get("raw_input", {})
                     for key, value in raw_input.items():
                         st.write(f"**{key.replace('_', ' ').title()}:** {value}")
             
             with col2:
-                st.markdown("<h3 class='section-title'>Recommendations</h3>", unsafe_allow_html=True)
+                st.markdown("""
+                    <h3 style='
+                        color: #1976D2;
+                        font-size: 1.8rem;
+                        margin: 1.5rem 0;
+                    '>Recommendations</h3>
+                """, unsafe_allow_html=True)
                 if prediction == 1:
                     st.error("""
                     #### Immediate Actions:
@@ -1489,7 +1765,6 @@ elif st.session_state.page == "Prediction":
                 st.session_state.pop("raw_input", None)
                 st.session_state.page = "Home"
                 st.rerun()
-            st.markdown("</div>", unsafe_allow_html=True)
             st.markdown("</div>", unsafe_allow_html=True)
 
         except Exception as e:
