@@ -1,0 +1,13 @@
+gender
+academic_pressure
+study_satisfaction
+sleep_duration
+dietary_habits
+degree
+suicidal_thoughts
+work_study_hours
+financial_stress
+family_mental_history
+age_bin
+cgpa_scaled
+cgpa_bin
