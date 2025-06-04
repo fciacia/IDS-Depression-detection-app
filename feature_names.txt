@@ -10,4 +10,3 @@ financial_stress
 family_mental_history
 age_bin
 cgpa_scaled
-cgpa_bin

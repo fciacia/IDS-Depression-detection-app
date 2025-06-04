@@ -504,104 +504,189 @@ if load_error:
 # Page 1: Home
 if st.session_state.page == "Home":
     st.markdown("<h1 class='main-title'>Depression Detection App</h1>", unsafe_allow_html=True)
-    
-    # Main CTA Button at the top
+
+    # Hero Section with CTA
     st.markdown("""
-        <div class='main-cta'>
-            <div class='main-cta-description'>
-                Take the first step towards better mental health
+        <div class='hero-section' style='background: linear-gradient(90deg, #e3f2fd 60%, #bbdefb 100%); border-radius: 2rem; padding: 2.5rem 2rem 2rem 2rem; margin-bottom: 2rem; box-shadow: 0 6px 24px rgba(33,150,243,0.08); text-align: center;'>
+            <h2 style='color: #1976D2; font-size: 2.2rem; font-weight: bold; margin-bottom: 1rem;'>Your Mental Health Journey Starts Here</h2>
+            <p style='color: #37474F; font-size: 1.2rem; margin-bottom: 2rem;'>
+                Every student faces unique challenges. This tool is here to help you reflect, understand, and take positive steps for your well-being. <br><br>
+                <span style='color: #1976D2; font-weight: 600;'>You are not alone.</span> Let's take the first step together.
+            </p>
+        </div>
+    """, unsafe_allow_html=True)
+
+    # Fancy CTA Button
+    st.markdown("""
+        <div class='fancy-cta-btn-wrapper' style='display: flex; flex-direction: column; align-items: center; margin-top: -3rem; margin-bottom: 2.5rem;'>
+            <div style='font-size: 1.2rem; color: #1976D2; font-weight: bold; margin-bottom: 1.2rem; letter-spacing: 1px;'>
+                Ready to begin?
+            </div>
+    """, unsafe_allow_html=True)
+    custom_btn_css = """
+        <style>
+        .fancy-cta-btn-wrapper .stButton > button {
+            background: linear-gradient(90deg, #42a5f5 0%, #1976d2 100%) !important;
+            color: white !important;
+            font-size: 2.3rem !important;
+            font-weight: 900 !important;
+            border: 4px solid transparent !important;
+            border-radius: 4rem !important;
+            padding: 1.7rem 5.5rem !important;
+            box-shadow: 0 8px 32px 0 rgba(33, 150, 243, 0.25), 0 0 32px 4px #90caf9 !important;
+            cursor: pointer !important;
+            transition: all 0.3s cubic-bezier(.4,2,.3,1) !important;
+            letter-spacing: 1.5px !important;
+            text-transform: uppercase !important;
+            outline: none !important;
+            position: relative;
+            z-index: 2;
+            border-image: linear-gradient(90deg, #42a5f5, #1976d2, #42a5f5) 1 !important;
+            box-sizing: border-box !important;
+        }
+        .fancy-cta-btn-wrapper .stButton > button:hover {
+            background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%) !important;
+            transform: scale(1.09) !important;
+            box-shadow: 0 16px 48px 0 rgba(33, 150, 243, 0.40), 0 0 64px 12px #42a5f5 !important;
+            filter: brightness(1.10);
+        }
+        .fancy-cta-btn-wrapper .stButton > button::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(66,165,245,0.22) 0%, rgba(25,118,210,0.10) 80%, transparent 100%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
+            animation: pulse-glow 2.5s infinite cubic-bezier(.4,2,.3,1);
+        }
+        @keyframes pulse-glow {
+            0% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.12); }
+            100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+        }
+        </style>
+    """
+    st.markdown(custom_btn_css, unsafe_allow_html=True)
+    if st.button("Start Analysis", key="start-analysis-functional"):
+        st.session_state.page = "Input Form"
+        st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    # Motivational Quote Card
+    st.markdown("""
+        <div class='content-section'>
+            <div class='quote-card' style='background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);'>
+                <div class='quote-text' style='font-size: 1.3rem;'>
+                    "You don't have to control your thoughts. You just have to stop letting them control you."
+                </div>
+                <div class='quote-author' style='margin-top: 1rem; color: #1976D2; font-weight: 600;'>- Dan Millman</div>
             </div>
         </div>
     """, unsafe_allow_html=True)
-    
-    # Center the button
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        if st.button("Start Analysis", use_container_width=True):
-            st.session_state.page = "Input Form"
-            st.rerun()
-    
-    # Statistics Cards
+
+    # Story/Statistics Section
     st.markdown("""
-        <div class='content-container'>
-            <h2 class='section-title'>Mental Health Statistics</h2>
-            <div class='stats-container'>
-                <div class='stat-card'>
-                    <div class='stat-number'>1 in 3</div>
-                    <div class='stat-label'>College students experience significant depression symptoms</div>
+        <div class='content-section' style='display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between;'>
+            <div class='story-card' style='flex: 2; min-width: 260px;'>
+                <div class='story-title' style='color: #FF9800; font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem;'>A Student's Story</div>
+                <p style='color: #37474F; font-size: 1.1rem;'>
+                    "When I started university, I felt overwhelmed by expectations and the pressure to succeed. I struggled with sleep, lost interest in things I loved, and felt isolated. It wasn't until I reached out for help that I realized how many others felt the same way. Seeking support changed my life."
+                </p>
+                <div style='margin-top: 1rem; color: #1976D2; font-weight: 600;'>
+                    Remember: <span style='color: #FF9800;'>Asking for help is a sign of strength.</span>
                 </div>
-                <div class='stat-card'>
-                    <div class='stat-number'>67%</div>
-                    <div class='stat-label'>Students don't seek help due to stigma</div>
+            </div>
+            <div style='flex: 1; min-width: 220px;'>
+                <div class='stat-card' style='background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%); border-left: 4px solid #2196F3; margin-bottom: 1rem;'>
+                    <div class='stat-number' style='font-size: 2rem; color: #1565C0; font-weight: bold;'>1 in 3</div>
+                    <div class='stat-label' style='color: #546E7A;'>Students experience significant depression symptoms</div>
                 </div>
-                <div class='stat-card'>
-                    <div class='stat-number'>80%</div>
-                    <div class='stat-label'>Depression is treatable with proper support</div>
+                <div class='stat-card' style='background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%); border-left: 4px solid #2196F3;'>
+                    <div class='stat-number' style='font-size: 2rem; color: #1565C0; font-weight: bold;'>80%</div>
+                    <div class='stat-label' style='color: #546E7A;'>Depression is treatable with proper support</div>
                 </div>
             </div>
         </div>
     """, unsafe_allow_html=True)
-    
-    col1, col2 = st.columns([2, 1])
-    
-    with col1:
-        st.markdown("""
-        <div class='main-content'>
-            <div class='content-section'>
-                <div class='story-card'>
-                    <div class='story-title'>Why This Matters</div>
-                    <p>Depression among students is more common than you might think. Academic pressure, 
-                    social adjustments, and personal challenges can all contribute to mental health concerns. 
-                    Early detection and support can make a significant difference in managing these challenges.</p>
-                </div>
-            </div>
 
-            <div class='content-section'>
-                <div class='quote-card'>
-                    <div class='quote-text'>
-                        "Mental health is not a destination, but a process. It's about how you drive, 
-                        not where you're going."
-                    </div>
-                    <div class='quote-author'>- Noam Shpancer, PhD</div>
-                </div>
-            </div>
-
-            <div class='content-section'>
-                <div class='info-section'>
-                    <h3 class='section-title'>Key Areas We Assess</h3>
-                    <ul class='custom-list'>
-                        <li>Academic pressure and satisfaction</li>
-                        <li>Sleep patterns and dietary habits</li>
-                        <li>Work-study balance</li>
-                        <li>Financial stress</li>
-                        <li>Personal and family history</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class='content-section'>
-                <div class='process-section'>
-                    <h3 class='section-title'>How it works:</h3>
-                    <ol class='custom-list'>
-                        <li>Fill out a simple questionnaire about your current situation</li>
-                        <li>Our AI model analyzes your responses</li>
-                        <li>Receive personalized feedback and recommendations</li>
-                    </ol>
-                </div>
+    # How it works section
+    st.markdown("""
+    <div class='main-content'>
+        <div class='content-section'>
+            <div class='process-section'>
+                <h3 class='section-title'>How it works:</h3>
+                <ol class='custom-list'>
+                    <li>Fill out a simple questionnaire about your current situation</li>
+                    <li>Our AI model analyzes your responses</li>
+                    <li>Receive personalized feedback and recommendations</li>
+                </ol>
             </div>
         </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
 
 # Page 2: Input Form
 elif st.session_state.page == "Input Form":
-    # Add back button at the top
-    st.markdown("<div class='back-button'>", unsafe_allow_html=True)
-    if st.button("← Back to Home"):
+    # Fancy Back Button
+    st.markdown("""
+        <div class='back-button' style='position: relative; margin-bottom: 1.5rem;'>
+            <style>
+            .fancy-back-btn button {
+                background: linear-gradient(90deg, #90CAF9, #1976D2) !important;
+                color: white !important;
+                font-size: 1.1rem !important;
+                font-weight: bold !important;
+                border-radius: 2rem !important;
+                padding: 0.7rem 2.2rem !important;
+                box-shadow: 0 2px 8px rgba(33,150,243,0.18) !important;
+                border: none !important;
+                transition: all 0.2s cubic-bezier(.4,2,.3,1) !important;
+                margin: 0 !important;
+            }
+            .fancy-back-btn button:hover {
+                background: linear-gradient(90deg, #1976D2, #42A5F5) !important;
+                transform: scale(1.05) !important;
+                box-shadow: 0 4px 16px rgba(33,150,243,0.25) !important;
+            }
+            </style>
+            <div class='fancy-back-btn'>
+    """, unsafe_allow_html=True)
+    if st.button("← Back to Home", key="back-to-home-btn"):
         st.session_state.page = "Home"
         st.rerun()
-    st.markdown("</div>", unsafe_allow_html=True)
-    
-    st.markdown("<h1 class='main-title'>Depression Risk Assessment Form</h1>", unsafe_allow_html=True)
+    st.markdown("</div></div>", unsafe_allow_html=True)
+
+    st.markdown("<h1 class='main-title'>Step 2: Your Story Matters</h1>", unsafe_allow_html=True)
+    st.markdown("""
+        <div class='content-section' style='background: linear-gradient(90deg, #e3f2fd 60%, #bbdefb 100%); border-radius: 1.5rem; padding: 1.5rem 2rem; margin-bottom: 2rem; box-shadow: 0 4px 16px rgba(33,150,243,0.10);'>
+            <h2 style='color: #1976D2; font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem;'>You're taking a positive step!</h2>
+            <p style='color: #37474F; font-size: 1.1rem;'>
+                This short assessment is private and confidential. There are no right or wrong answers—just be honest with yourself. <br><br>
+                <span style='color: #1976D2; font-weight: 600;'>Remember: You are not alone on this journey.</span>
+            </p>
+        </div>
+    """, unsafe_allow_html=True)
+    # Progress indicator
+    st.markdown("""
+        <div style='text-align:center; margin-bottom: 1.5rem;'>
+            <span style='display:inline-block; background: linear-gradient(90deg, #42a5f5, #1976d2); color: white; font-weight: bold; border-radius: 2rem; padding: 0.5rem 1.5rem; font-size: 1.1rem; letter-spacing: 1px;'>Step 2 of 3: Assessment</span>
+        </div>
+    """, unsafe_allow_html=True)
+    # Sidebar storytelling/fact
+    st.markdown("""
+        <div class='story-card' style='max-width: 400px; margin: 0 auto 2rem auto; background: #fffde7;'>
+            <div class='story-title' style='color: #FF9800;'>Did you know?</div>
+            <p style='color: #37474F; font-size: 1.05rem;'>
+                More than half of students who struggle with mental health never seek help. <br>
+                <span style='color: #1976D2; font-weight: 600;'>Taking this assessment is a sign of courage and self-care.</span>
+            </p>
+        </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("<div class='content-container'>", unsafe_allow_html=True)
     with st.form("depression_assessment"):
@@ -661,6 +746,29 @@ elif st.session_state.page == "Input Form":
         """, unsafe_allow_html=True)
         
         st.markdown("<div class='center-content'>", unsafe_allow_html=True)
+        submit_css = """
+            <style>
+            .center-content .stForm .stButton > button, .center-content .stButton > button {
+                display: block;
+                margin: 0 auto;
+                background: linear-gradient(90deg, #1976D2, #42A5F5) !important;
+                color: white !important;
+                font-size: 1.3rem !important;
+                font-weight: bold !important;
+                border-radius: 2.5rem !important;
+                padding: 1.1rem 3.5rem !important;
+                box-shadow: 0 4px 16px rgba(33,150,243,0.18) !important;
+                border: none !important;
+                transition: all 0.2s cubic-bezier(.4,2,.3,1) !important;
+            }
+            .center-content .stForm .stButton > button:hover, .center-content .stButton > button:hover {
+                background: linear-gradient(90deg, #42A5F5, #1976D2) !important;
+                transform: scale(1.06) !important;
+                box-shadow: 0 8px 32px rgba(33,150,243,0.25) !important;
+            }
+            </style>
+        """
+        st.markdown(submit_css, unsafe_allow_html=True)
         submitted = st.form_submit_button("Submit Assessment")
         st.markdown("</div>", unsafe_allow_html=True)
         
@@ -688,12 +796,7 @@ elif st.session_state.page == "Input Form":
                         "PhD": 4
                     }
 
-                    # Calculate CGPA bin
-                    cgpa_scaled = cgpa
-                    bin_edges = np.arange(0.0, 4.01, 0.1)
-                    cgpa_bin = pd.cut([cgpa_scaled], bins=bin_edges, labels=False, include_lowest=True)[0]
-                    
-                    # Create input data dictionary
+                    # Create input data dictionary with exact feature names from feature_names.txt
                     input_data = {
                         'gender': gender_encoded,
                         'academic_pressure': academic_pressure,
@@ -706,30 +809,23 @@ elif st.session_state.page == "Input Form":
                         'financial_stress': financial_stress,
                         'family_mental_history': 1 if family_mental_history == "Yes" else 0,
                         'age_bin': 0,  # Default age bin
-                        'cgpa_scaled': cgpa_scaled,
-                        'cgpa_bin': cgpa_bin
+                        'cgpa_scaled': float(cgpa)  # Ensure cgpa is converted to float
                     }
                     
-                    # Validate input data
-                    is_valid, error_message = validate_input(input_data)
-                    if not is_valid:
-                        st.error(f"Invalid input: {error_message}")
-                        st.stop()
-                    
-                    # Create DataFrame and validate features
+                    # Create DataFrame and ensure column order matches feature_names.txt exactly
                     input_df = pd.DataFrame([input_data])
-                    if set(feature_names[:-1]) != set(input_df.columns):
-                        missing_features = set(feature_names[:-1]) - set(input_df.columns)
-                        extra_features = set(input_df.columns) - set(feature_names[:-1])
-                        error_msg = []
-                        if missing_features:
-                            error_msg.append(f"Missing features: {', '.join(missing_features)}")
-                        if extra_features:
-                            error_msg.append(f"Extra features: {', '.join(extra_features)}")
-                        raise ValueError("\n".join(error_msg))
                     
-                    # Reorder columns to match feature_names
-                    input_df = input_df[feature_names[:-1]]
+                    # Get the feature names from feature_names.txt
+                    with open('feature_names.txt', 'r') as f:
+                        feature_names = f.read().splitlines()
+                    
+                    # Reorder columns to match feature_names.txt exactly
+                    input_df = input_df[feature_names]  # Use all features from feature_names.txt
+                    
+                    # Validate that all required features are present
+                    missing_features = set(feature_names) - set(input_df.columns)
+                    if missing_features:
+                        raise ValueError(f"Missing features: {', '.join(missing_features)}")
                     
                     # Store in session state
                     st.session_state["input_data"] = input_df
@@ -760,14 +856,57 @@ elif st.session_state.page == "Input Form":
 
 # Page 3: Prediction
 elif st.session_state.page == "Prediction":
-    # Add back button at the top
-    st.markdown("<div class='back-button'>", unsafe_allow_html=True)
-    if st.button("← Back to Form"):
+    # Fancy Back Button
+    st.markdown("""
+        <div class='back-button' style='position: relative; margin-bottom: 1.5rem;'>
+            <style>
+            .fancy-back-btn button {
+                background: linear-gradient(90deg, #90CAF9, #1976D2) !important;
+                color: white !important;
+                font-size: 1.1rem !important;
+                font-weight: bold !important;
+                border-radius: 2rem !important;
+                padding: 0.7rem 2.2rem !important;
+                box-shadow: 0 2px 8px rgba(33,150,243,0.18) !important;
+                border: none !important;
+                transition: all 0.2s cubic-bezier(.4,2,.3,1) !important;
+                margin: 0 !important;
+            }
+            .fancy-back-btn button:hover {
+                background: linear-gradient(90deg, #1976D2, #42A5F5) !important;
+                transform: scale(1.05) !important;
+                box-shadow: 0 4px 16px rgba(33,150,243,0.25) !important;
+            }
+            </style>
+            <div class='fancy-back-btn'>
+    """, unsafe_allow_html=True)
+    if st.button("← Back to Form", key="back-to-form-btn"):
         st.session_state.page = "Input Form"
         st.rerun()
-    st.markdown("</div>", unsafe_allow_html=True)
-    
-    st.markdown("<h1 class='main-title'>Assessment Results</h1>", unsafe_allow_html=True)
+    st.markdown("</div></div>", unsafe_allow_html=True)
+
+    st.markdown("<h1 class='main-title'>Step 3: Your Results</h1>", unsafe_allow_html=True)
+    st.markdown("""
+        <div class='content-section' style='background: linear-gradient(90deg, #e3f2fd 60%, #bbdefb 100%); border-radius: 1.5rem; padding: 1.5rem 2rem; margin-bottom: 2rem; box-shadow: 0 4px 16px rgba(33,150,243,0.10);'>
+            <h2 style='color: #1976D2; font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem;'>Thank you for sharing your story.</h2>
+            <p style='color: #37474F; font-size: 1.1rem;'>
+                Your responses help us provide you with personalized feedback and support. <br><br>
+                <span style='color: #1976D2; font-weight: 600;'>Remember: You are not alone, and support is always available.</span>
+            </p>
+        </div>
+    """, unsafe_allow_html=True)
+    # Storytelling/hope card
+    st.markdown("""
+        <div class='story-card' style='max-width: 500px; margin: 0 auto 2rem auto;'>
+            <div class='story-title' style='color: #FF9800;'>A Message of Hope</div>
+            <p style='color: #37474F; font-size: 1.05rem;'>
+                "Recovery is not a straight line. Many students have faced similar struggles and found their way to brighter days. Reaching out is a sign of strength, not weakness."
+            </p>
+            <div style='margin-top: 1rem; color: #1976D2; font-weight: 600;'>
+                You matter. Your story matters.
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
 
     if "input_data" not in st.session_state:
         st.markdown("<div class='content-container'>", unsafe_allow_html=True)
@@ -819,21 +958,53 @@ elif st.session_state.page == "Prediction":
                     """, unsafe_allow_html=True)
                 
                 st.markdown("<h3 class='section-title'>Confidence Level</h3>", unsafe_allow_html=True)
-                st.progress(confidence)
-                st.write(f"Model confidence: {confidence:.1%}")
+                st.markdown("""
+                    <div style='margin: 1.5rem 0;'>
+                        <div style='font-weight: bold; color: #1976D2; margin-bottom: 0.5rem;'>Confidence Level</div>
+                        <div style='background: #e3f2fd; border-radius: 2rem; height: 38px; width: 100%; box-shadow: 0 2px 8px rgba(33,150,243,0.10); position: relative;'>
+                            <div style='background: linear-gradient(90deg, #42A5F5, #1976D2); height: 100%; border-radius: 2rem; width: {0}%; transition: width 0.7s cubic-bezier(.4,2,.3,1); box-shadow: 0 2px 12px #90caf9; position: absolute; left: 0; top: 0; display: flex; align-items: center;'>
+                                <span style='color: white; font-weight: bold; font-size: 1.1rem; margin-left: 1.2rem;'>{1:.1f}%</span>
+                            </div>
+                        </div>
+                    </div>
+                """.format(confidence*100, confidence*100), unsafe_allow_html=True)
                 
                 st.markdown("<h3 class='section-title'>Key Contributing Factors</h3>", unsafe_allow_html=True)
                 st.markdown("<div class='chart-container'>", unsafe_allow_html=True)
-                feature_importance = pd.DataFrame({
-                    'Factor': feature_names[:-1],
-                    'Value': input_df.iloc[0].values,
-                    'Importance': model.feature_importances_
-                }).sort_values('Importance', ascending=False)
                 
+                # Get feature names from feature_names.txt
+                with open('feature_names.txt', 'r') as f:
+                    feature_names = f.read().splitlines()
+                
+                # Create feature importance DataFrame with proper alignment
+                feature_importance = pd.DataFrame({
+                    'Factor': feature_names,  # Use all feature names
+                    'Value': input_df.iloc[0].values,  # Values from input
+                    'Importance': model.feature_importances_  # Importance scores from model
+                })
+                
+                # Sort by importance and get top 5
+                feature_importance = feature_importance.sort_values('Importance', ascending=False).head(5)
+                
+                # Create the plot
                 fig, ax = plt.subplots(figsize=(10, 6))
-                plt.barh(feature_importance['Factor'][:5], feature_importance['Importance'][:5])
-                plt.title("Top 5 Most Influential Factors")
+                bars = plt.barh(feature_importance['Factor'], feature_importance['Importance'])
+                
+                # Customize the plot
+                plt.title("Top 5 Most Influential Factors", pad=20)
                 plt.xlabel("Relative Importance")
+                
+                # Add value labels on the bars
+                for i, bar in enumerate(bars):
+                    width = bar.get_width()
+                    plt.text(width, bar.get_y() + bar.get_height()/2,
+                            f'{width:.3f}',
+                            ha='left', va='center', fontweight='bold')
+                
+                # Adjust layout
+                plt.tight_layout()
+                
+                # Display the plot
                 st.pyplot(fig)
                 st.markdown("</div>", unsafe_allow_html=True)
                 

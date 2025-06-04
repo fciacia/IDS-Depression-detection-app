@@ -24,14 +24,14 @@ class DataPreprocessor:
         
         self.categorical_mappings = {
             'dietary_habits': {
-                'Unhealthy': 1,
-                'Moderate': 2,
+        'Unhealthy': 1,
+        'Moderate': 2,
                 'Healthy': 3
             },
             'sleep_duration': {
-                'Less than 5 hours': 1,
-                '5-6 hours': 2,
-                '7-8 hours': 3,
+        'Less than 5 hours': 1,
+        '5-6 hours': 2,
+        '7-8 hours': 3,
                 'More than 8 hours': 4
             },
             'family_mental_history': {'No': 0, 'Yes': 1},
@@ -160,7 +160,7 @@ class DataPreprocessor:
                     df[col] = pd.to_numeric(df[col], errors='coerce')
                     if df[col].isnull().any():
                         df[col].fillna(df[col].median(), inplace=True)
-            
+
             metadata['final_shape'] = df.shape
             logging.info("Preprocessing completed successfully")
             
